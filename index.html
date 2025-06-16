@@ -8,9 +8,9 @@
     <meta property="og:site_name" content="Aniversário Sarah e João"/>
     <meta property="og:title" content="🌺 Aniversário Sarah e João 🌺"/>
     <meta property="og:type" content="website"/>    
-    <meta property="description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>    
-    <meta property="og:description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>
-    <meta name="twitter:description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>    
+    <meta property="description" content="🌺 Aniversário Sarah e João 🌺"/>    
+    <meta property="og:description" content="🌺 Aniversário Sarah e João 🌺"/>
+    <meta name="twitter:description" content="🌺 Aniversário Sarah e João 🌺"/>    
     <meta property="og:image" content="https://eusoubrasileiro.github.io/aniversario/page.png"/>
     <meta property="og:image:secure_url" content="https://eusoubrasileiro.github.io.github.io/aniversario/page.png"/>
     <meta property="og:image:type" content="image/png" />
@@ -438,6 +438,12 @@
     </style>
 </head>
 <body>
+    <!-- Background music -->
+    <audio id="backgroundMusic" autoplay loop muted>
+        <source src="lilo&stitch.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
     <div class="invitation-card">
         
         <div class="stamp">Ohana:<br/>Não pode<br/>esquecer!</div>
@@ -482,6 +488,26 @@
     </div>
 
     <script>
+        // Background music handling
+        let musicStarted = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        
+        function startMusic() {
+            if (!musicStarted && backgroundMusic) {
+                backgroundMusic.muted = false;
+                backgroundMusic.play().catch(e => {
+                    console.log('Auto-play prevented:', e);
+                });
+                musicStarted = true;
+            }
+        }
+        
+        // Try to start music on any user interaction
+        const startMusicEvents = ['click', 'touchstart', 'keydown', 'scroll'];
+        startMusicEvents.forEach(event => {
+            document.addEventListener(event, startMusic, { once: true });
+        });
+        
         // Create floating Stitch elements
         function createFloatingElements() {
             for (let i = 0; i < 10; i++) {
