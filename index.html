@@ -64,7 +64,7 @@
         }
 
         .stitch {
-            background: url('stitch.webp') center/contain no-repeat;
+            background: url('stitch.svg') center/contain no-repeat;
             background-size: 100% 100%;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
@@ -94,7 +94,9 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             padding: 30px;
             width: 400px;
-            height: 600px;
+            height: 90vh;
+            max-height: 800px;
+            min-height: 600px;
             text-align: center;
             margin: 20px;
             animation: cardAppear 1s ease-out;
@@ -126,32 +128,22 @@
             line-height: 1.2;
         }
 
-        .subtitle {
-            font-family: 'Comfortaa', cursive;
-            color: var(--secondary-color);
-            font-size: 1.4em;
-            margin: 10px 0;
-            font-weight: 400;
+        .content-container {
+            padding-top: 55% !important;
         }
 
         .main-title {
-            padding-top: 40%;
             font-family: 'Fredoka One', cursive;
-            font-size: 2.8em;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            margin: 20px 0;
+            font-size: 2.4em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);            
             animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        .main-title .aniversario {
             color: #719a36;
-            display: block;
-            margin-bottom: 10px;
         }
 
-        .main-title .nomes {
-            color: var(--primary-color);
+        .main-title .text {
+            display: block;
         }
+
 
         @keyframes titleGlow {
             0% {
@@ -204,19 +196,18 @@
 
         .birthday-info {
             background: rgba(255, 255, 255, 0.7);
-            padding: 15px;
-            border-radius: 15px;
-            margin: 15px auto;
-            width: 50%;
-            height: 20%;
-            max-width: 300px;
+            padding: 2%;
+            border-radius: 10px;
+            margin: 3% auto;
+            width: 60%;
+            height: 18%;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .birthday-kids {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 10px;
             align-items: center;
         }
 
@@ -226,11 +217,12 @@
 
         .age-display {
             font-family: 'Fredoka One', sans-serif;
-            font-size: 3.8em;
+            font-size: 8vw;
+            max-font-size: 3.8em;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
             animation: bounce 2s infinite;
             line-height: 1;
-            margin: 5px 0;
+            margin: 1% 0;
         }
 
         .age-display.sarah {
@@ -243,9 +235,10 @@
 
         .name-display {
             font-family: 'Baloo 2', cursive;
-            font-size: 2.2em;
+            font-size: 4vw;
+            max-font-size: 2.2em;
             font-weight: 600;
-            margin: 5px 0;
+            margin: 1% 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
@@ -264,7 +257,7 @@
         }
 
         .details {
-            margin: 20px 0;
+            margin: 4% 0;
             line-height: 1.8;
         }
 
@@ -272,8 +265,9 @@
             font-family: 'Baloo 2', sans-serif;
             color: var(--text-color);
             font-weight: 500;
-            margin: 12px 0;
-            font-size: 1.4em;
+            margin: 2% 0;
+            font-size: 3vw;
+            max-font-size: 1.4em;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
@@ -282,11 +276,42 @@
             font-size: 1.1em;
         }
 
+        .special-guest {
+            margin: 3% 0;
+            text-align: center;
+        }
+
+        .special-guest p {
+            font-family: 'Baloo 2', sans-serif;
+            color: #719a36;
+            font-weight: 600;
+            font-size: 2.8vw;
+            max-font-size: 1.3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 0;
+        }
+
+        .separator {
+            font-size: 3em;
+            margin: 0 15px;
+            animation: float-gentle 3s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-8px) rotate(5deg); 
+            }
+        }
+
         .buttons {
-            margin-top: 25px;
+            margin-top: 5%;
             display: flex;
             flex-direction: row;
-            gap: 20px;
+            gap: 4%;
             align-items: center;
             justify-content: center;
         }
@@ -305,10 +330,44 @@
         }
 
         .button img {
-            width: 150px;
+            width: 30vw;
+            max-width: 150px;
             height: auto;
             display: block;
             border-radius: 15px;
+        }
+
+        @media (min-width: 769px) {
+            .invitation-card {
+                width: 450px;
+                height: 85vh;
+                max-height: 900px;
+                padding: 40px;
+            }
+            
+            .main-title {
+                font-size: 3em;
+            }
+
+            .age-display {
+                font-size: 3.8em;
+            }
+            
+            .name-display {
+                font-size: 2.2em;
+            }
+            
+            .details p {
+                font-size: 1.4em;
+            }
+
+            .special-guest p {
+                font-size: 1.3em;
+            }
+
+            .button img {
+                width: 150px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -321,15 +380,14 @@
             .stamp {
                 top: 10px;
                 right: 10px;
-                width: 90px;
-                height: 90px;
-                font-size: 0.7em;
+                width: 108px;
+                height: 108px;
+                font-size: 0.84em;
                 border-width: 3px;
             }
 
             .main-title {
                 font-size: 2.2em;
-                padding-top: 35%;
             }
 
             .main-title .aniversario {
@@ -337,34 +395,44 @@
             }
             
             .birthday-info {
-                width: 90%;
-                max-width: 280px;
-                padding: 10px;
+                width: 85%;
+                height: 20%;
             }
 
             .birthday-kids {
-                gap: 20px;
+                gap: 6%;
             }
             
             .age-display {
-                font-size: 3.2em;
+                font-size: 12vw;
             }
             
             .name-display {
-                font-size: 1.9em;
+                font-size: 6vw;
             }
             
             .details p {
-                font-size: 1.1em;
+                font-size: 4vw;
+            }
+
+            .special-guest p {
+                font-size: 4vw;
+            }
+
+            .separator {
+                font-size: 8vw;
+                margin: 0 4%;
             }
 
             .buttons {
-                flex-direction: column;
-                gap: 15px;
+                flex-direction: row;
+                gap: 4%;
+                margin-top: 6%;
             }
 
             .button img {
-                width: 180px;
+                width: 25vw;
+                max-width: 180px;
             }
         }
     </style>
@@ -374,36 +442,42 @@
         
         <div class="stamp">Ohana:<br/>Não pode<br/>esquecer!</div>
 
-        <div class="main-title">
-            <span class="aniversario">Aniversário</span>
-            <span class="aniversario">João e Sarah</span>
-        </div>
-
-        <div class="birthday-info">
-            <div class="birthday-kids">
-                <div class="birthday-kid">
-                    <div class="age-display sarah">6</div>
-                    <div class="name-display">Sarah</div>
-                </div>
-                <div class="birthday-kid">
-                    <div class="age-display joao">1</div>
-                    <div class="name-display">João</div>
-                </div>
+        <div class="content-container">
+            <div class="main-title">
+                <span class="text">Aniversário</span>            
             </div>
-        </div>        
-        
-        <div class="details">
-            <p><strong>📅 </strong> 26/06/2025</p>
-            <p><strong>🕐 </strong> 17:30 às 19:30</p>            
-        </div>
 
-        <div class="buttons">
-            <a href="https://maps.app.goo.gl/rEW3Z3BeUuZ7p2TK7" class="button">
-                <img src="localização.webp" alt="Local da Festa">
-            </a>
-            <a href="https://api.whatsapp.com/send/?phone=5531987152333&text&type=phone_number&app_absent=0" class="button">
-                <img src="confirmar-presença.webp" alt="Confirmar Presença">
-            </a>
+            <div class="birthday-info">
+                <div class="birthday-kids">
+                    <div class="birthday-kid">
+                        <div class="age-display sarah">6</div>
+                        <div class="name-display">Sarah</div>
+                    </div>
+                    <div class="separator">🌺</div>
+                    <div class="birthday-kid">
+                        <div class="age-display joao">1</div>
+                        <div class="name-display">João</div>
+                    </div>
+                </div>
+            </div>        
+            
+            <div class="details">
+                <p><strong>📅 </strong> 26/06/2025</p>
+                <p><strong>🕐 </strong> 17:30 às 19:30</p>            
+            </div>
+
+            <div class="special-guest">
+                <p>🎉 Você é nosso convidado especial! 🎉</p>
+            </div>
+
+            <div class="buttons">
+                <a href="https://maps.app.goo.gl/rEW3Z3BeUuZ7p2TK7" class="button">
+                    <img src="localização.webp" alt="Local da Festa">
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=5531987152333&text&type=phone_number&app_absent=0" class="button">
+                    <img src="confirmar-presença.webp" alt="Confirmar Presença">
+                </a>
+            </div>
         </div>
     </div>
 
@@ -417,20 +491,20 @@
                 // Random position
                 element.style.left = `${Math.random() * 100}vw`;
                 
-                // Random animation timing
-                element.style.animationDelay = `${Math.random() * 20}s`;
-                element.style.animationDuration = `${15 + Math.random() * 10}s`;
+                // Faster animation timing - appear much sooner
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                element.style.animationDuration = `${8 + Math.random() * 6}s`;
                 
                 // Random final rotation (between 180deg and 720deg for varied spinning)
                 const randomRotation = 180 + Math.random() * 540;
                 element.style.setProperty('--random-rotation', `${randomRotation}deg`);
                 
-                // Random size variation
-                const size = 30 + Math.random() * 20; // Between 30px and 50px
+                // Double the size - Between 60px and 100px (was 30-50px)
+                const size = 60 + Math.random() * 40;
                 element.style.width = `${size}px`;
                 element.style.height = `${size}px`;
                 
-                element.style.animation = `float ${15 + Math.random() * 10}s linear infinite`;
+                element.style.animation = `float ${8 + Math.random() * 6}s linear infinite`;
                 
                 document.body.appendChild(element);
             }
