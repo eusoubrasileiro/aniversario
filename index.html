@@ -439,7 +439,7 @@
 </head>
 <body>
     <!-- Background music -->
-    <audio id="backgroundMusic" autoplay loop muted>
+    <audio id="backgroundMusic" autoplay loop preload="auto" controls style="display: none;">
         <source src="lilo&stitch.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -494,18 +494,39 @@
         
         function startMusic() {
             if (!musicStarted && backgroundMusic) {
-                backgroundMusic.muted = false;
-                backgroundMusic.play().catch(e => {
-                    console.log('Auto-play prevented:', e);
+                backgroundMusic.volume = 0.7; // Set a nice volume level
+                backgroundMusic.play().then(() => {
+                    console.log('Music started successfully!');
+                    musicStarted = true;
+                }).catch(e => {
+                    console.log('Auto-play prevented, will try on user interaction:', e);
+                    // Still set up user interaction listeners as fallback
+                    setupUserInteractionListeners();
                 });
-                musicStarted = true;
             }
         }
         
-        // Try to start music on any user interaction
-        const startMusicEvents = ['click', 'touchstart', 'keydown', 'scroll'];
-        startMusicEvents.forEach(event => {
-            document.addEventListener(event, startMusic, { once: true });
+        function setupUserInteractionListeners() {
+            const startMusicEvents = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'];
+            startMusicEvents.forEach(event => {
+                document.addEventListener(event, () => {
+                    if (!musicStarted && backgroundMusic) {
+                        backgroundMusic.volume = 0.7;
+                        backgroundMusic.play().then(() => {
+                            console.log('Music started after user interaction!');
+                            musicStarted = true;
+                        }).catch(e => {
+                            console.log('Still unable to play music:', e);
+                        });
+                    }
+                }, { once: true });
+            });
+        }
+        
+        // Try to start music immediately when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Small delay to ensure audio element is ready
+            setTimeout(startMusic, 100);
         });
         
         // Create floating Stitch elements
