@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+    <meta name="app-name" content="aniversario_sarah"/>
+    <title>🌺 Aniversário Sarah e João 🌺 </title>    
+    <meta property="og:site_name" content="Aniversário Sarah e João"/>
+    <meta property="og:title" content="🌺 Aniversário Sarah e João 🌺"/>
+    <meta property="og:type" content="website"/>    
+    <meta property="description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>    
+    <meta property="og:description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>
+    <meta name="twitter:description" content="🌺 Festa de Aniversário Sarah e João 🌺"/>    
+    <meta property="og:image" content="https://eusoubrasileiro.github.io/aniversario/page.png"/>
+    <meta property="og:image:secure_url" content="https://eusoubrasileiro.github.io.github.io/aniversario/page.png"/>
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="364"/>
+    <meta property="og:image:height" content="630"/>    
+    <meta property="og:updated_time" content="2025-03-15T14:25:42Z" />
+    <meta property="og:url" content="https://eusoubrasileiro.github.io/aniversario"/>
+    <meta name="referrer" content="strict-origin-when-cross-origin">        
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <style>
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #4ecdc4;
+            --accent-color: #45b7d1;
+            --text-color: #2c3e50;
+            --background-color: #fff8f0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Baloo 2', 'Arial', sans-serif;
+            background: url('background.webp') center/cover fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 240, 0.8);
+            z-index: 0;
+        }
+
+        /* Floating elements animation */
+        .floating-element {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            z-index: 1;
+        }
+
+        .stitch {
+            background: url('stitch.webp') center/contain no-repeat;
+            background-size: 100% 100%;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(var(--random-rotation));
+                opacity: 0;
+            }
+        }
+
+        .invitation-card {
+            background: url('background.webp') center/contain no-repeat;
+            background-size: 100% 100%;
+            position: relative;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 400px;
+            height: 600px;
+            text-align: center;
+            margin: 20px;
+            animation: cardAppear 1s ease-out;
+            z-index: 10;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                transform: scale(0.8) rotateY(180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+
+        .title-section {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Comfortaa', cursive;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Comfortaa', cursive;
+            color: var(--secondary-color);
+            font-size: 1.4em;
+            margin: 10px 0;
+            font-weight: 400;
+        }
+
+        .main-title {
+            padding-top: 40%;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin: 20px 0;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .main-title .aniversario {
+            color: #719a36;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .main-title .nomes {
+            color: var(--primary-color);
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            }
+            100% {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.3), 0 0 20px rgba(255, 107, 157, 0.6);
+            }
+        }
+
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            border: 4px solid #e74c3c;
+            border-radius: 50%;
+            background: rgba(231, 76, 60, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            font-family: 'Fredoka One', cursive;
+            font-size: 0.9em;
+            color: #e74c3c;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 10px rgba(231, 76, 60, 0.3);
+            animation: stampAppear 2.5s ease-out 0.8s both;
+        }
+
+        @keyframes stampAppear {
+            0% {
+                transform: rotate(-15deg) scale(0);
+                opacity: 0;
+            }
+            70% {
+                transform: rotate(-15deg) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(-15deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .birthday-info {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px auto;
+            width: 50%;
+            height: 20%;
+            max-width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .birthday-kids {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .birthday-kid {
+            text-align: center;
+        }
+
+        .age-display {
+            font-family: 'Fredoka One', sans-serif;
+            font-size: 3.8em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+            line-height: 1;
+            margin: 5px 0;
+        }
+
+        .age-display.sarah {
+            color: #ff76a0;
+        }
+
+        .age-display.joao {
+            color: var(--accent-color);
+        }
+
+        .name-display {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin: 5px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .birthday-kid:first-child .name-display {
+            color: #ff76a0;
+        }
+
+        .birthday-kid:last-child .name-display {
+            color: var(--accent-color);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .details {
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .details p {
+            font-family: 'Baloo 2', sans-serif;
+            color: var(--text-color);
+            font-weight: 500;
+            margin: 12px 0;
+            font-size: 1.4em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .details strong {
+            color: var(--secondary-color);
+            font-size: 1.1em;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .button img {
+            width: 150px;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .invitation-card {
+                padding: 20px;
+                width: 320px;
+                height: 480px;
+            }
+
+            .stamp {
+                top: 10px;
+                right: 10px;
+                width: 90px;
+                height: 90px;
+                font-size: 0.7em;
+                border-width: 3px;
+            }
+
+            .main-title {
+                font-size: 2.2em;
+                padding-top: 35%;
+            }
+
+            .main-title .aniversario {
+                margin-bottom: 5px;
+            }
+            
+            .birthday-info {
+                width: 90%;
+                max-width: 280px;
+                padding: 10px;
+            }
+
+            .birthday-kids {
+                gap: 20px;
+            }
+            
+            .age-display {
+                font-size: 3.2em;
+            }
+            
+            .name-display {
+                font-size: 1.9em;
+            }
+            
+            .details p {
+                font-size: 1.1em;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .button img {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        
+        <div class="stamp">Ohana:<br/>Não pode<br/>esquecer!</div>
+
+        <div class="main-title">
+            <span class="aniversario">Aniversário</span>
+            <span class="aniversario">João e Sarah</span>
+        </div>
+
+        <div class="birthday-info">
+            <div class="birthday-kids">
+                <div class="birthday-kid">
+                    <div class="age-display sarah">6</div>
+                    <div class="name-display">Sarah</div>
+                </div>
+                <div class="birthday-kid">
+                    <div class="age-display joao">1</div>
+                    <div class="name-display">João</div>
+                </div>
+            </div>
+        </div>        
+        
+        <div class="details">
+            <p><strong>📅 </strong> 26/06/2025</p>
+            <p><strong>🕐 </strong> 17:30 às 19:30</p>            
+        </div>
+
+        <div class="buttons">
+            <a href="https://maps.app.goo.gl/rEW3Z3BeUuZ7p2TK7" class="button">
+                <img src="localização.webp" alt="Local da Festa">
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=5531987152333&text&type=phone_number&app_absent=0" class="button">
+                <img src="confirmar-presença.webp" alt="Confirmar Presença">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating Stitch elements
+        function createFloatingElements() {
+            for (let i = 0; i < 10; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element stitch';
+                
+                // Random position
+                element.style.left = `${Math.random() * 100}vw`;
+                
+                // Random animation timing
+                element.style.animationDelay = `${Math.random() * 20}s`;
+                element.style.animationDuration = `${15 + Math.random() * 10}s`;
+                
+                // Random final rotation (between 180deg and 720deg for varied spinning)
+                const randomRotation = 180 + Math.random() * 540;
+                element.style.setProperty('--random-rotation', `${randomRotation}deg`);
+                
+                // Random size variation
+                const size = 30 + Math.random() * 20; // Between 30px and 50px
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                element.style.animation = `float ${15 + Math.random() * 10}s linear infinite`;
+                
+                document.body.appendChild(element);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', createFloatingElements);
+    </script>
+</body>
+</html> 
